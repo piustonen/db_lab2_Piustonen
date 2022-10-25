@@ -1,50 +1,37 @@
-CREATE TABLE Genres
-(
-  genre_id      char(10)  NOT NULL ,
-  genre_name    char(50)  NOT NULL 
-);
+CREATE TABLE songs(
+	song_id int NOT NULL,
+	song_name char(50) NOT NULL,
+	loudness int NOT NULL,
+	speechiness int NOT NULL,
+	tempo int NOT NULL,
+	danceability int NOT NULL);
 
-CREATE TABLE Songs
-(
-  song_id      char(10)  NOT NULL ,
-  song_name    char(50)  NOT NULL 
-);
+CREATE TABLE genres(
+	genre_id int NOT NULL ,
+	genre_name char(50)  NOT NULL);
 
-CREATE TABLE Artists
-(
-  artist_id      char(10)  NOT NULL ,
-  artist_name    char(50)  NOT NULL 
-);
-CREATE TABLE Releases
-(
-  release_id      char(10)  NOT NULL ,
-  genre_id        char(10)  NOT NULL ,
-  song_id         char(10)  NOT NULL ,
-  release_date    date      NOT NULL ,
-  release_time    time      NULL     ,
-  release_place   char(50)  NULL
-);
-CREATE TABLE Performances
-(
-  perf_id        char(10)   NOT NULL ,
-  artist_id      char(10)   NOT NULL ,
-  song_id        char(10)   NOT NULL ,
-  perf_date      date       NOT NULL ,
-  perf_time      time       NULL     ,
-  perf_place     char(50)   NULL 
-);
-ALTER TABLE Genres ADD CONSTRAINT PK_Genre PRIMARY KEY (genre_id);
-ALTER TABLE Songs ADD CONSTRAINT PK_Songs PRIMARY KEY (song_id);
-ALTER TABLE Artists ADD CONSTRAINT PK_Artists PRIMARY KEY (artist_id);
-ALTER TABLE Releases ADD CONSTRAINT PK_Releases PRIMARY KEY (release_id);
-ALTER TABLE Performances ADD CONSTRAINT PK_Performances PRIMARY KEY (perf_id);
+CREATE TABLE artists(
+	artist_id int NOT NULL,
+	artist_name char(50) NOT NULL);
 
-ALTER TABLE Releases
-ADD CONSTRAINT FK_Releases_Genres FOREIGN KEY (genre_id) REFERENCES Genres (genre_id);
-ALTER TABLE Releases
-ADD CONSTRAINT FK_Releases_Songs FOREIGN KEY (song_id) REFERENCES Songs (song_id);
+CREATE TABLE song_release(
+	song_release_id int NOT NULL,
+	artist_id int NOT NULL,
+	song_id int NOT NULL,
+	genre_id int NOT NULL);
 
-ALTER TABLE Performances
-ADD CONSTRAINT FK_Performances_Artists FOREIGN KEY (artist_id) REFERENCES Artists (artist_id);
-ALTER TABLE Performances
-ADD CONSTRAINT FK_Performances_Songs FOREIGN KEY (song_id) REFERENCES Songs (song_id);
+ALTER TABLE songs ADD CONSTRAINT PK_songs PRIMARY KEY (song_id);
+ALTER TABLE genres ADD CONSTRAINT PK_genres PRIMARY KEY (genre_id);
+ALTER TABLE artists ADD CONSTRAINT PK_artists PRIMARY KEY (artist_id);
+ALTER TABLE song_release ADD CONSTRAINT PK_song_release PRIMARY KEY (song_release_id);
+
+ALTER TABLE song_release
+ADD CONSTRAINT FK_song_release_artists FOREIGN KEY (artist_id) REFERENCES artists (artist_id);
+
+ALTER TABLE song_release
+ADD CONSTRAINT FK_song_release_songs FOREIGN KEY (song_id) REFERENCES songs (song_id);
+
+ALTER TABLE song_release
+ADD CONSTRAINT FK_song_release_genres FOREIGN KEY (genre_id) REFERENCES genres (genre_id);
+
+
