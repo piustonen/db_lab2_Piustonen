@@ -25,6 +25,7 @@ query_3 = '''
 SELECT song_name, tempo
 FROM songs
 WHERE tempo > 100
+ORDER BY tempo ASC
 '''
 
 conn = psycopg2.connect(user = username, password = password, dbname = database, host = host, port = port)
