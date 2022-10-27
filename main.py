@@ -7,18 +7,18 @@ host = 'localhost'
 port = '5432'
 
 query_1 = '''
+SELECT TRIM(genre_name) as genres, 
+COUNT(genre_id) FROM song_release 
+JOIN genres USING(genre_id) 
+GROUP BY genre_name
+'''
+
+query_2 = '''
 SELECT TRIM(artist_name) as artists, 
 COUNT(artist_id) FROM song_release 
 JOIN artists USING(artist_id) 
 GROUP BY artist_name
 ORDER BY COUNT DESC
-'''
-
-query_2 = '''
-SELECT TRIM(genre_name) as genres, 
-COUNT(genre_id) FROM song_release 
-JOIN genres USING(genre_id) 
-GROUP BY genre_name
 '''
 
 query_3 = '''
