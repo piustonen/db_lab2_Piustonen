@@ -1,54 +1,58 @@
-INSERT INTO 
-songs(song_id, song_name, loudness, speechiness, tempo, danceability) 
-VALUES
-('1', 'drivers license', -8.81, 0.0578, 143.875, 0.561),
-('2', 'MONTERO (Call Me By Your Name)', -6.725, 0.22, 178.781, 0.593),
-('3', 'STAY (with Justin Bieber)', -5.484, 0.0483, 169.928, 0.591),
-('4', 'good 4 u', -5.044, 0.154, 166.928, 0.563),
-('5', 'Levitating (feat. DaBaby)', -3.787, 0.0601, 102.977, 0.702),
-('6', 'Peaches (feat. Daniel Caesar & Giveon)', -6.181, 0.119, 90.03, 0.677),
-('7', 'Kiss Me More (feat. SZA)', -3.463, 0.0284, 110.97, 0.764),
-('8', 'Blinding Lights', -5.934, 0.0598, 171.005, 0.514),
-('9', 'Heat Waves', -6.9, 0.0944, 80.87, 0.761),
-('10', 'Beggin', -4.808, 0.0504, 134.002, 0.714);
+INSERT INTO cloud_artists(artist_id, artist_name) 
+VALUES('AriGrand', 'Ariana Grande'),
+('EdSheer', 'Ed Sheeran'),
+('LilT', 'Lil Tecca'),
+('SSmith', 'Sam Smith'),
+('LilNX', 'Lil Nas X'),
+('BBunny', 'Bad Bunny'),
+('DJSnake', 'DJ Snake'),
+('LCap', 'Lewis Capaldi'),
+('Drake', 'Drake');
 
-INSERT INTO 
-genres(genre_id, genre_name) 
-VALUES
-('1', 'Pop'),
-('2', 'Rock'),
-('3', 'Hip hop'),
-('4', 'Latin'),
-('5', 'Dance'),
-('6', 'R&B'),
-('7', 'Folk'),
-('8', 'Classical'),
-('9', 'Jazz'),
-('10', 'Blues');
+INSERT INTO cloud_genres(genre_id, genre_name) 
+VALUES('001', 'pop'),
+('002', 'country rap'),
+('003', 'reggaeton'),
+('004', 'latin'),
+('005', 'boy band'),
+('006', 'canadian hip hop'),
+('007', 'trap music'),
+('008', 'dance pop'),
+('009', 'escape room'),
+('010', 'brostep');
 
-INSERT INTO 
-artists(artist_id, artist_name) 
-VALUES
-('1', 'Lil Nas X'),
-('2', 'Dua Lipa'),
-('3', 'Olivia Rodrigo'),
-('4', 'Måneskin'),
-('5', 'Glass Animals'),
-('6', 'The Kid LAROI'),
-('7', 'Doja Cat'),
-('8', 'The Weeknd'),
-('9', 'Justin Bieber');
+INSERT INTO cloud_songs(song_id, song_name) 
+VALUES('1', 'boyfriend (with Social House)'),
+('2', 'Beautiful People (feat. Khalid)'),
+('3', 'I Dont Care (with Justin Bieber)'),
+('4', 'Ransom'),
+('5', 'How Do You Sleep?'),
+('6', 'Old Town Road - Remix'),
+('7', 'Callaita'),
+('8', 'Loco Contigo (feat. J. Balvin & Tyga)'),
+('9', 'Someone You Loved'),
+('10', 'Money In The Grave (Drake ft. Rick Ross)');
 
-INSERT INTO 
-song_release(song_release_id, artist_id, song_id, genre_id) 
-VALUES
-('1', '3', '1', '1'),
-('2', '1', '2', '3'),
-('3', '6', '3', '2'),
-('4', '3', '4', '1'),
-('5', '2', '5', '5'),
-('6', '9', '6', '6'),
-('7', '7', '7', '6'),
-('8', '8', '8', '10'),
-('9', '5', '9', '4'),
-('10', '4', '10', '4');
+INSERT INTO cloud_releases(release_id, genre_id, song_id, release_date, release_time, release_place) 
+VALUES('108b', '008', '1', to_date('2019-08-02', 'yyyy-mm-dd'), NULL, 'USA'),
+('201b', '001', '2', to_date('2019-06-28', 'yyyy-mm-dd'), '19:00:00', 'UK'),
+('301i', '001', '3', to_date('2019-10-18', 'yyyy-mm-dd'), '21:00:00', 'UK'),
+('407r', '007', '4', to_date('2019-05-22', 'yyyy-mm-dd'), NULL, 'France'),
+('501h', '001', '5', to_date('2019-10-17', 'yyyy-mm-dd'), '11:45:00', 'USA'),
+('602o', '002', '6', to_date('2018-12-03', 'yyyy-mm-dd'), '20:00:00', NULL),
+('703c', '003', '7', to_date('2019-05-31', 'yyyy-mm-dd'), '11:00:00', 'UK'),
+('808l', '008', '8', to_date('2019-06-14', 'yyyy-mm-dd'), NULL, 'UK'),
+('901s', '001', '9', to_date('2018-11-08', 'yyyy-mm-dd'), '16:30:00', NULL),
+('106m', '006', '10', to_date('2019-06-15', 'yyyy-mm-dd'), '22:00:00', 'USA');
+
+INSERT INTO cloud_performances(perf_id, artist_id, song_id, perf_date, perf_time, perf_place) 
+VALUES('108051019', 'AriGrand', '1', to_date('2019-10-05', 'yyyy-mm-dd'), '10:00:00', 'USA'),
+('201051119', 'EdSheer', '2', to_date('2019-11-05', 'yyyy-mm-dd'), '19:00:00', 'UK'),
+('301151119', 'EdSheer', '3', to_date('2019-11-15', 'yyyy-mm-dd'), '21:00:00', 'UK'),
+('407161119', 'LilT', '4', to_date('2019-11-16', 'yyyy-mm-dd'), '21:00:00', 'France'),
+('501181119', 'SSmith', '5', to_date('2019-11-18', 'yyyy-mm-dd'), '20:00:00', 'USA'),
+('602221119', 'LilNX', '6', to_date('2019-11-22', 'yyyy-mm-dd'), '20:00:00', 'USA'),
+('703021219', 'BBunny', '7', to_date('2019-12-02', 'yyyy-mm-dd'), '11:00:00', 'Italy'),
+('808051219', 'DJSnake', '8', to_date('2019-12-05', 'yyyy-mm-dd'), '15:30:00', 'UK'),
+('901111219', 'LCap', '9', to_date('2019-12-11', 'yyyy-mm-dd'), '16:30:00', 'Germany'),
+('101251219', 'Drake', '10', to_date('2019-12-25', 'yyyy-mm-dd'), '22:00:00', 'USA');
