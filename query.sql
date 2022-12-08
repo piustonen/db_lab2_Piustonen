@@ -1,17 +1,19 @@
--- The number of songs (histplot)
-SELECT TRIM(artist_name) as artists, 
-COUNT(artist_id) FROM song_release 
-JOIN artists USING(artist_id) 
-GROUP BY artist_name
-ORDER BY COUNT DESC
-
--- The number of each genre (piechart)
-SELECT TRIM(genre_name) as genres, 
-COUNT(genre_id) FROM song_release 
-JOIN genres USING(genre_id) 
+SELECT TRIM(genre_name) AS genre, 
+COUNT(genre_id) 
+FROM cloud_releases 
+JOIN cloud_genres USING(genre_id) 
 GROUP BY genre_name
 
--- The > 100 tempo (lineplot)
-SELECT song_name, tempo
-FROM songs
-WHERE tempo > 100
+SELECT TRIM(artist_name) as artist, 
+COUNT(song_id) 
+FROM cloud_artists 
+JOIN cloud_performances USING(artist_id) 
+GROUP BY artist_name	
+
+SELECT TRIM(genre_name) AS genre, 
+COUNT(*) FROM cloud_performances 
+JOIN cloud_songs USING(song_id) 
+JOIN cloud_releases USING(song_id) 
+JOIN cloud_genres USING(genre_id) 
+WHERE perf_place != 'USA' 
+GROUP BY genre_name
