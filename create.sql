@@ -1,36 +1,36 @@
 CREATE TABLE cloud_genres
 (
-  genre_id      char(10)  NOT NULL ,
-  genre_name    char(50)  NOT NULL 
+  genre_id      char(30)  NOT NULL ,
+  genre_name    char(30)  NOT NULL 
 );
 CREATE TABLE cloud_songs
 (
-  song_id      char(10)  NOT NULL ,
-  song_name    char(50)  NOT NULL 
+  song_id      char(30)  NOT NULL ,
+  song_name    char(30)  NOT NULL 
 );
 CREATE TABLE cloud_artists
 (
-  artist_id      char(10)  NOT NULL ,
-  artist_name    char(50)  NOT NULL 
+  artist_id      char(30)  NOT NULL ,
+  artist_name    char(30)  NOT NULL 
 );
 CREATE TABLE cloud_releases
 (
-  release_id      char(10)  NOT NULL ,
-  genre_id        char(10)  NOT NULL ,
-  song_id         char(10)  NOT NULL ,
+  release_id      char(30)  NOT NULL ,
+  genre_id        char(30)  NOT NULL ,
+  song_id         char(30)  NOT NULL ,
   release_date    date      NOT NULL ,
   release_time    time      NULL     ,
-  release_place   char(50)  NULL
+  release_place   char(30)  NULL
 );
 
 CREATE TABLE cloud_performances
 (
-  perf_id        char(10)   NOT NULL ,
-  artist_id      char(10)   NOT NULL ,
-  song_id        char(10)   NOT NULL ,
+  perf_id        char(30)   NOT NULL ,
+  artist_id      char(30)   NOT NULL ,
+  song_id        char(30)   NOT NULL ,
   perf_date      date       NOT NULL ,
   perf_time      time       NULL     ,
-  perf_place     char(50)   NULL 
+  perf_place     char(30)   NULL 
 );
 
 ALTER TABLE cloud_genres ADD CONSTRAINT PK_cloud_genres PRIMARY KEY (genre_id);
